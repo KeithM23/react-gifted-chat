@@ -192,11 +192,14 @@ class GiftedChat extends React.Component {
 
   renderMessages() {
     return (
-      <div style={{
-        height: `calc(100% - ${this.state.composerHeight}px)`,
-        display: 'flex',
-        flexDirection: 'column'
-      }}
+      <div
+        ref={this.messagesOuterContainer}
+        style={{
+          height: `calc(100% - ${this.state.composerHeight}px)`,
+          display: 'flex',
+          flexDirection: 'column'
+        }}
+        className={`${this.props.messagesOuterContainerClassName}`}
       >
         <MessageContainer
           {...this.props}
@@ -334,14 +337,22 @@ class GiftedChat extends React.Component {
   render() {
     if (this.state.isInitialized === true) {
       return (
-        <View style={styles.container} onLayout={this.onMainViewLayout}>
+        <View
+          style={styles.container}
+          onLayout={this.onMainViewLayout}
+          className={`${this.props.containerClassName}`}
+        >
           {this.renderMessages()}
           {this.renderInputToolbar()}
         </View>
       );
     }
     return (
-      <View style={styles.container} onLayout={this.onInitialLayoutViewLayout}>
+      <View
+        style={styles.container}
+        onLayout={this.onInitialLayoutViewLayout}
+        className={`${this.props.containerClassName} ${this.props.containerLoadingClassName}`}
+      >
         {this.renderLoading()}
       </View>
     );
@@ -412,6 +423,12 @@ GiftedChat.defaultProps = {
   extraData: null,
   minComposerHeight: MIN_COMPOSER_HEIGHT,
   maxComposerHeight: MAX_COMPOSER_HEIGHT,
+  containerClassName: "gc-container",
+  containerLoadingClassName: "gc-container-loading",
+  messagesContainerClassName: "gc-container-messages",
+  messagesContainerLoadingClassName: "gc-container-messages-loading",
+  messagesOuterContainerClassName: "gc-outer-container-messages",
+  messagesListClassName: "gc-container-list"
 };
 
 GiftedChat.propTypes = {

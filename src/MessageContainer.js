@@ -126,8 +126,8 @@ export default class MessageContainer extends React.PureComponent {
         style={{ flex: 1 }}
         onLayout={() => {
           // this.flatListRef.current.scrollTo({x: 0, y: 0, animated: true});
-        }
-      }
+        }}
+        className={this.props.messagesContainerClassName}
       >
         {this.state.showScrollBottom && this.props.scrollToBottom ? this.renderScrollToBottomWrapper() : null}
         <WebScrollView
@@ -143,6 +143,7 @@ export default class MessageContainer extends React.PureComponent {
           renderItem={this.renderRow}
           ListFooterComponent={this.renderHeaderWrapper}
           ListHeaderComponent={this.renderFooter}
+          listClassName={this.props.messagesListClassName}
         />
       </View>
     );
@@ -196,6 +197,7 @@ MessageContainer.defaultProps = {
   extraData: null,
   scrollToBottom: false,
   scrollToBottomOffset: 200,
+  messagesListClassName: "gc-container-messages-list"
 };
 
 MessageContainer.propTypes = {
