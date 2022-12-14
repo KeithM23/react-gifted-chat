@@ -58,7 +58,7 @@
     "react-dev-utils": "^6.1.1",
     "react-dom": "^16.6.3",
     "react-image-lightbox": "^5.1.0",
-    "react-native-web": "0.9.9",
+    "react-native-web": "0.18.0",
     "shallowequal": "1.1.0",
     "uuid": "3.3.2"
   },
